@@ -22,4 +22,32 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <!-- Shade Plugin to create a Fat JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.4.1</version> <!-- This is a stable version -->
+                <executions>
+                    <execution>
+                        <phase>package</phase> <!-- This binds the plugin to the package phase -->
+                        <goals>
+                            <goal>shade</goal> <!-- Goal to create the fat JAR -->
+                        </goals>
+                        <configuration>
+                            <!-- Define transformers to configure the fat JAR -->
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>app.Main</mainClass> <!-- Change to your main class -->
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
 </project>

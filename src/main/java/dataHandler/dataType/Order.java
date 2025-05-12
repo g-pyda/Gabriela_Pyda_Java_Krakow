@@ -95,12 +95,9 @@ public class Order {
 
         // the last bank with the same discount rate - new position
         index = promotionsRateSorted.indexOf((double) currentPayment.getDiscount());
-        System.out.println(index);
-        System.out.println(promotionsRateSorted);
         if (index < promotionsRateSorted.size() - 1)
             return promotionsRate.get(promotionsRateSorted.get(index+1)).getFirst();
         // no positions further - no other discounts available
-        System.out.println("Null approached");
         return null;
     }
 }
